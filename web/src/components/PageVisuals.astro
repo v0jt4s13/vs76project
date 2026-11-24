@@ -1,0 +1,28 @@
+---
+import { site } from '../data/site';
+import a1 from '../assets/photos/szk-prowadzacy.webp';
+import a2 from '../assets/photos/szk-dyskusja.webp';
+import a3 from '../assets/photos/szk-zespol.webp';
+import b1 from '../assets/photos/edu-nauczycielka.webp';
+import b2 from '../assets/photos/edu-laptop-tablica.webp';
+import b3 from '../assets/photos/edu-lekcja.webp';
+import c1 from '../assets/photos/sec-klodka.webp';
+import c2 from '../assets/photos/sec-biurko.webp';
+import c3 from '../assets/photos/sec-laptop.webp';
+import d1 from '../assets/photos/dor-dokumenty.webp';
+import d2 from '../assets/photos/dor-plan.webp';
+import d3 from '../assets/photos/dor-notatnik.webp';
+import e1 from '../assets/photos/wsp-notatki.webp';
+// Grafiki pokazujemy tylko w szablonie starter. Źródła i licencje: templates/starter/assets/CREDITS.md.
+const sets: Record<string, [typeof a1, string][]> = {
+ szkolenia: [[a1, 'Prowadzący omawia zadanie z uczestnikami szkolenia'], [a2, 'Uczestnicy dyskutują przy stole z laptopem'], [a3, 'Zespół pracuje na laptopach przy wspólnym stole']],
+ edukacja: [[b1, 'Nauczycielka przy laptopie przed tablicą'], [b2, 'Praca z laptopem w klasie'], [b3, 'Nauczyciel pomaga uczniowi w zadaniu']],
+ 'ai-security': [[c1, 'Kłódka na klawiaturze laptopa'], [c2, 'Biurko z laptopem, notatnikiem i kawą'], [c3, 'Laptop na stole przy filiżance']],
+ doradztwo: [[d1, 'Zespół analizuje dokumenty przy stole'], [d2, 'Tablica z planem etapów projektu'], [d3, 'Notatnik i klawiatura na biurku']],
+ wspolpraca: [[e1, 'Notatki podczas spotkania przy stole'], [d1, 'Zespół analizuje dokumenty przy stole'], [a1, 'Prowadzący omawia zadanie z uczestnikami']],
+ 'o-nas': [[a3, 'Zespół pracuje na laptopach przy wspólnym stole'], [d3, 'Notatnik i klawiatura na biurku']],
+};
+const { set } = Astro.props as { set: string };
+const items = site.template === 'starter' ? sets[set] ?? [] : [];
+---
+{items.length > 0 && <div class="container page-visuals" data-visual-set={set} data-count={items.length}>{items.map(([img, alt]) => <figure><img src={img.src} alt={alt} width="900" height="600" loading="lazy" decoding="async" /></figure>)}</div>}

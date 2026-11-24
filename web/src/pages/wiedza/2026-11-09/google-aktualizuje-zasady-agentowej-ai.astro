@@ -1,0 +1,44 @@
+---
+import Content from '../../../layouts/Content.astro';
+import CTA from '../../../components/CTA.astro';
+---
+<Content title="Google aktualizuje zasady korzystania z agentowej AI" lead="Google odnotowało 12 października 2026 r. zmiany w wybranych warunkach Google Cloud i Google Workspace. Dla organizacji to sygnał, by sprawdzić nie tylko używane narzędzia, ale też uprawnienia i nadzór nad agentami.">
+ <figure class="container article-visual">
+  <img src="/images/articles/agentic-ai-governance.jpeg" alt="Szafa serwerowa z okablowaniem i włączonymi urządzeniami sieciowymi." width="1920" height="1280" fetchpriority="high" decoding="async" />
+  <figcaption>Ilustracja infrastruktury IT wykorzystywanej przez usługi cyfrowe. Zdjęcie <a href="https://unsplash.com/photos/a-rack-of-servers-in-a-server-room-2JJ3wBHu4_0" target="_blank" rel="noopener noreferrer">Kevina Ache na Unsplash</a>.</figcaption>
+ </figure>
+ <article class="container prose section-bottom">
+  <p><strong>Aktualizacja: 23 listopada 2026 r.</strong> Poniżej opisujemy publiczny rejestr zmian i warunki Google sprawdzone w tym dniu. Zastosowanie konkretnych zapisów zależy od usługi i umowy danej organizacji.</p>
+
+  <h2>Co się zmieniło?</h2>
+  <p>Google poinformowało o zmianach w internetowych Warunkach korzystania z usługi Google Cloud oraz Szczegółowych warunkach korzystania z usługi Google Workspace. Zmiany dotyczą agentów AI i odpowiedzialności za ich działania. W Google Workspace doprecyzowano między innymi kwestie własności intelektualnej oraz odpowiedzialności klienta za działania agentów, ich dopasowanie do celu, przyznany dostęp i nadzór w środowisku produkcyjnym.</p>
+  <p>W Warunkach Google Cloud zaktualizowano sekcje 3.3 i 13.2: ograniczenia korzystania z usług obejmują także agentów AI klienta, a zakres obowiązku odszkodowawczego klienta uwzględnia naruszenia zasad dopuszczalnego użytkowania przez agentów. Szczegóły i brzmienie zapisów należy sprawdzić w umowie właściwej dla danej organizacji.</p>
+  <p>Google opublikowało również <a href="https://cloud.google.com/terms/agentic-ai-use-guidelines">Wytyczne dotyczące odpowiedzialnego korzystania z agentowej AI</a>. Wskazują one ograniczenia związane między innymi z bezpieczeństwem, nadużyciami, prywatnością i nadzorem. Google rekomenduje mechanizmy ludzkiej kontroli oraz wyraźne zatwierdzanie działań, szczególnie gdy mogą one istotnie wpływać na ludzi, finanse, umowy lub systemy produkcyjne.</p>
+
+  <h2>Ważna jest także aktualizacja z 2 września</h2>
+  <p>Rejestr Google wymienia również zmiany z 2 września 2026 r. Dotyczą one opłat za pełne miesiące przy potencjalnie oszukańczym przedwczesnym wyłączeniu Google Workspace, zawieszenia usług przy potencjalnie oszukańczych metodach płatności oraz natychmiastowego rozwiązania umowy przy naruszeniu, którego nie można usunąć.</p>
+  <p>Wstęp do internetowych Warunków Google Cloud wskazuje, że przy podpisanej umowie offline dotyczącej danych usług na tym samym koncie zastosowanie ma ta umowa, a nie przedstawione warunki internetowe. Nie oznacza to ogólnego wyłączenia wszystkich zasad dotyczących agentów AI: trzeba sprawdzić własną umowę oraz dokumenty, do których odsyła.</p>
+
+  <h2>Co sprawdzić w organizacji?</h2>
+  <ul>
+   <li><strong>Warunki umowy:</strong> ustal, które produkty i dokumenty obejmują firmę. Przeczytaj aktualne <a href="https://cloud.google.com/terms/">Warunki korzystania z Google Cloud</a>, <a href="https://workspace.google.com/terms/service-terms/">Szczegółowe warunki Google Workspace</a> oraz właściwe warunki produktowe. W razie wątpliwości skonsultuj je z osobą odpowiedzialną za umowy.</li>
+   <li><strong>Rejestr agentów:</strong> zapisz, jakie agenty są używane, do jakich zadań, przez kogo i z dostępem do jakich danych, aplikacji oraz systemów. Uwzględnij agentów skonfigurowanych przez pracowników, a nie tylko oficjalne wdrożenia IT.</li>
+   <li><strong>Uprawnienia i nadzór:</strong> ogranicz dostęp do minimum potrzebnego do wykonania zadania. Określ, które działania wymagają zatwierdzenia człowieka, jak można przerwać działanie agenta i kto odpowiada za przegląd jego wyników.</li>
+   <li><strong>Ryzyka i koszty:</strong> sprawdź ochronę danych, odporność procesu na nieoczekiwane instrukcje w treściach wejściowych, limity użycia i sposób monitorowania kosztów. Działania dotyczące płatności, umów, danych produkcyjnych lub decyzji o istotnych skutkach powinny mieć odpowiednie zabezpieczenia i jasno wskazanego właściciela.</li>
+   <li><strong>Zasady wewnętrzne:</strong> zaktualizuj procedury dopuszczania narzędzi, klasyfikacji danych, testów, zatwierdzania działań, obsługi incydentów i okresowego przeglądu dostępu.</li>
+  </ul>
+
+  <h2>Praktyczny wniosek</h2>
+  <p>Agent może nie tylko tworzyć treść, ale też wykonywać czynności w podłączonych usługach. Dlatego wdrożenie powinno określać granice jego działania, przyznane uprawnienia, nadzór człowieka i sposób zatrzymania procesu. Sama aktualizacja regulaminu nie zastąpi przeglądu konfiguracji i firmowych procedur.</p>
+  <p>To omówienie informacyjne, a nie porada prawna ani ocena zgodności konkretnej organizacji. Przed podjęciem decyzji sprawdź dokumenty właściwe dla swojej umowy i skonsultuj niejasne zapisy z odpowiednim specjalistą.</p>
+
+  <h2>Źródła Google</h2>
+  <ul>
+   <li><a href="https://cloud.google.com/legal-change-log">Podsumowanie zmian warunków i zasad Google Cloud</a></li>
+   <li><a href="https://cloud.google.com/terms/agentic-ai-use-guidelines">Wytyczne dotyczące odpowiedzialnego korzystania z agentowej AI</a></li>
+   <li><a href="https://cloud.google.com/terms/">Warunki korzystania z Google Cloud</a></li>
+   <li><a href="https://workspace.google.com/terms/service-terms/">Szczegółowe warunki korzystania z usługi Google Workspace</a></li>
+  </ul>
+ </article>
+ <CTA title="Ustal zasady użycia agentów w swojej firmie." text="Zacznij od mapy zadań, danych, uprawnień i punktów wymagających zatwierdzenia przez człowieka." />
+</Content>

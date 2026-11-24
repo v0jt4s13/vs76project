@@ -1,0 +1,54 @@
+---
+import ArrowRight from '../../components/ArrowRight.astro';
+import { courses, pln } from '../../data/trainings';
+import workshop from '../../assets/photos/szk-zespol.webp';
+import course1 from './assets/course-1.webp';
+import course2 from './assets/course-2.webp';
+import course3 from './assets/course-3.webp';
+const coursePhotos = [course1, course2, course3];
+const photoClass = ['photo-one', 'photo-two', 'photo-three'];
+const photoAlt = ['Zespół pracuje na laptopach przy wspólnym stole w biurze', 'Tablica z kartkami przedstawiająca plan etapów projektu', 'Kłódka na klawiaturze laptopa jako symbol ochrony danych'];
+---
+<section class="hero" aria-labelledby="hero-title">
+ <div class="hero-content container">
+  <div class="hero-copy">
+   <h1 id="hero-title">AI, z którym<br />potrafisz<br /><em>pracować.</em></h1>
+   <p>Praktyczne szkolenia i doradztwo dla firm. Od konkretnego zadania do wyniku, który umiesz sprawdzić.</p>
+   <div class="hero-actions"><a class="button button-primary" href="/szkolenia/">Znajdź szkolenie <span aria-hidden="true"><ArrowRight /></span></a><a class="button button-outline" href="/kontakt/">Porozmawiajmy <span aria-hidden="true"><ArrowRight /></span></a></div>
+  </div>
+ </div>
+ <div class="hero-media"><img src={workshop.src} alt="Zdjęcie ilustracyjne: zespół pracuje przy stole z laptopami" width={workshop.width} height={workshop.height} fetchpriority="high" /><div class="pixel-motif" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+</section>
+
+<section class="courses section container" id="szkolenia" aria-labelledby="courses-title">
+ <div class="section-heading"><h2 id="courses-title">Wybierz umiejętność,<br />której potrzebuje zespół.</h2><p>Trzy samodzielne szkolenia. Każde z konkretnym rezultatem, ćwiczeniami i oceną zadania.</p></div>
+ <div class="course-list">
+  {courses.map((c, i) => (
+   <article class="course">
+    <img src={coursePhotos[i % 3].src} class={`course-photo ${photoClass[i % 3]}`} alt={photoAlt[i % 3]} width="480" height="240" loading="lazy" />
+    <div class="course-body">
+     <h3><a href={`/szkolenia/${c.slug}/`}>{c.short}</a></h3>
+     <p>{c.lead}</p>
+     <p class="course-meta">{c.hours} netto, {pln(c.price)} zł netto za grupę online{c.badge && <span class="tag">{c.badge}</span>}</p>
+    </div>
+    <a class="round-link" href={`/szkolenia/${c.slug}/`} aria-label={`Zobacz program: ${c.short}`}><ArrowRight /></a>
+   </article>
+  ))}
+ </div>
+ <div class="programs" role="group" aria-label="Zakres szkoleń">
+  {courses.map((c) => (
+   <details>
+    <summary>Program: {c.short}</summary>
+    <ul>{c.modules.map((m) => <li>{m}</li>)}</ul>
+    <p><a href={`/szkolenia/${c.slug}/`}>Zobacz pełny program <ArrowRight /></a> <a href={`/kontakt/?temat=${encodeURIComponent(c.short)}`}>Zapytaj o szkolenie <ArrowRight /></a></p>
+   </details>
+  ))}
+ </div>
+ <p class="courses-more"><a href="/szkolenia/">Porównaj programy <ArrowRight /></a><a href="/downloads/training_catalog.pdf" download>Pobierz katalog PDF <ArrowRight /></a><a href="/edukacja/">Szkolenia dla szkół <ArrowRight /></a></p>
+</section>
+
+<section class="consulting section" id="doradztwo"><div class="container consulting-inner"><h2>Od zadania<br />do sprawdzonego wyniku.</h2><div><p>Wiedza. Praktyka. Kontrola.</p><p>Porozmawiajmy o procesie, który chcesz usprawnić, i o tym, jak odpowiedzialnie wykorzystać w nim AI.</p><a class="button button-primary" href="/doradztwo/">Porozmawiajmy o procesie <span aria-hidden="true"><ArrowRight /></span></a></div></div></section>
+
+<section class="section container knowledge" id="wiedza"><h2>Zacznij od dobrych pytań.</h2><div><details><summary>Jak wybrać szkolenie dla zespołu?</summary><p>Zacznij od zadania, które zespół chce wykonywać lepiej. Codzienna praca, projekt pilota i bezpieczeństwo to trzy odrębne punkty startu.</p></details><details><summary>Jak przygotować się do rozmowy?</summary><p>Opisz obecny proces, oczekiwany wynik i ograniczenia dotyczące danych. Nie przesyłaj poufnych materiałów na etapie pierwszego kontaktu.</p></details><p class="knowledge-links"><a href="/wiedza/2026-10-30/jak-sprawdzac-odpowiedzi-ai/">Jak sprawdzać odpowiedzi AI? <ArrowRight /></a><a href="/wiedza/2026-10-30/od-zadania-do-pilota/">Od zadania do pilota <ArrowRight /></a></p></div></section>
+
+<section class="contact section" id="kontakt"><div class="container"><h2>Co chcesz zrobić z AI?</h2><p>Opowiedz o potrzebach swojego zespołu.</p><a class="button button-primary" href="/kontakt/">Przejdź do formularza <span aria-hidden="true"><ArrowRight /></span></a></div></section>

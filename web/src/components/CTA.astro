@@ -1,0 +1,5 @@
+---
+import Arrow from './Arrow.astro';
+const { title='Zacznijmy od zadania Twojego zespołu.', text='Opisz, co chcesz usprawnić. Dobierzemy szkolenie lub zakres konsultacji do celu, danych i poziomu grupy.' } = Astro.props;
+---
+<section class="contact-band"><div class="container contact-band-inner"><div><h2>{title}</h2><p>{text}</p></div><a class="button button-inverse" href="/kontakt/">Przygotuj zapytanie<Arrow /></a></div></section>

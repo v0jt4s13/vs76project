@@ -1,0 +1,27 @@
+{
+  "name": "talnet-website",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "ASTRO_TELEMETRY_DISABLED=1 node_modules/node/bin/node node_modules/astro/bin/astro.mjs build",
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 node_modules/node/bin/node node_modules/astro/bin/astro.mjs dev --host 0.0.0.0",
+    "test": "node_modules/node/bin/node --test tests/contact.test.mjs tests/wcag-contrast.test.mjs tests/motion-reveal.test.mjs",
+    "check": "node_modules/node/bin/node node_modules/typescript/bin/tsc --noEmit",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 node_modules/node/bin/node node_modules/astro/bin/astro.mjs preview --host 127.0.0.1",
+    "test:build": "node_modules/node/bin/node --test tests/built-ui.test.mjs tests/wcag-structure.test.mjs",
+    "dev:local": "ASTRO_TELEMETRY_DISABLED=1 node_modules/node/bin/node node_modules/astro/bin/astro.mjs dev --host 127.0.0.1",
+    "dev:templates": "bash ../scripts/dev_templates.sh",
+    "test:api-ui": "PUBLIC_CONTACT_API=true ASTRO_TELEMETRY_DISABLED=1 node_modules/node/bin/node node_modules/astro/bin/astro.mjs build --outDir dist-api && node_modules/node/bin/node --test tests/contact-api-ui.test.mjs && WCAG_DIST=dist-api node_modules/node/bin/node --test tests/wcag-structure.test.mjs",
+    "test:templates": "bash ../scripts/test_templates.sh",
+    "templates:list": "node -e \"const fs=require('fs');const d='src/templates/';for(const n of fs.readdirSync(d)){if(n.startsWith('_')||!fs.existsSync(d+n+'/template.json'))continue;const m=JSON.parse(fs.readFileSync(d+n+'/template.json','utf8'));console.log(n+': '+m.label+'. '+m.description)}\"",
+    "prebuild": "python3 ../scripts/package_banners.py"
+  },
+  "dependencies": {
+    "astro": "7.4.2"
+  },
+  "devDependencies": {
+    "node": "^22.23.4",
+    "typescript": "^5.0.0"
+  }
+}

@@ -1,0 +1,4 @@
+---
+const { footer = false } = Astro.props;
+---
+<a class:list={['brand', { 'brand-footer': footer }]} href="/" aria-label="vs76project.pl: strona główna"><svg width="34" height="34" viewBox="0 0 80 80" aria-hidden="true">{Array.from({length:9},(_,i)=><rect x={(i%3)*30} y={Math.floor(i/3)*30} width="14" height="14" fill={i===2?'var(--brand-blue)':'currentColor'}/>)}</svg><span>vs76project.pl</span></a>

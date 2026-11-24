@@ -1,0 +1,161 @@
+---
+import ArrowRight from '../components/ArrowRight.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Próbki bannerów" description="Animowane próbki bannerów reklamowych vs76project w trzech popularnych formatach.">
+ <header class="banner-page-head container page-head">
+  <p class="eyebrow">Materiały promocyjne</p>
+  <h1>Próbki bannerów</h1>
+  <p class="lead">Trzy animowane formaty w identyfikacji vs76project. Podgląd zachowuje wymiary 1:1; na wąskim ekranie przewiń pierwszy banner poziomo.</p>
+ </header>
+
+ <section class="banner-gallery container" aria-label="Galeria bannerów">
+  <label class="banner-motion-control" for="pause-banners"><input type="checkbox" id="pause-banners" /> Wstrzymaj animacje bannerów</label>
+  <article class="banner-sample">
+   <div class="sample-heading"><div><p class="sample-type">Poziomy</p><h2>750 × 100 px</h2></div><p>Leaderboard</p></div>
+   {['dark', 'light'].map((theme) => <section class="banner-variant" aria-label={`Wariant ${theme === 'dark' ? 'ciemny' : 'jasny'}`}>
+    <div class="variant-heading"><h3>{theme === 'dark' ? 'Motyw ciemny' : 'Motyw jasny'}</h3><a class="download-link" href={`/downloads/bannery/vs76project-750x100-${theme}.zip`} download={`vs76project-750x100-${theme}.zip`}>Pobierz kod banneru (.zip) <span aria-hidden="true">↓</span></a></div>
+    <div class="banner-viewport" tabindex="0" aria-label={`Podgląd banneru 750 na 100 pikseli, motyw ${theme === 'dark' ? 'ciemny' : 'jasny'}. Na wąskim ekranie przewiń poziomo.`}>
+     <a class:list={['ad-banner', 'ad-leaderboard', `theme-${theme}`]} href="/szkolenia/" aria-label="vs76project. AI w praktyce. Zobacz szkolenia.">
+      <span class="ad-brand"><span class="ad-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span>vs76project</span></span>
+      <span class="ad-rule" aria-hidden="true"></span>
+      <span class="leaderboard-copy"><span class="sr-only">AI w praktyce. Wiedza, praktyka, kontrola.</span><span class="leaderboard-words" aria-hidden="true"><span>AI w praktyce</span><span>Wiedza.</span><span>Kontrola.</span></span></span>
+      <span class="leaderboard-visual" aria-hidden="true"><svg viewBox="0 0 132 76" fill="none" aria-hidden="true"><path d="M9 51 38 18l27 37 27-28 30 25M12 14l24 5 17 39 23-31 30-14" stroke="currentColor" stroke-opacity=".55" stroke-width="1.2"/><rect x="5" y="46" width="8" height="8" fill="currentColor"/><rect x="34" y="14" width="8" height="8" fill="currentColor"/><rect x="61" y="51" width="8" height="8" fill="currentColor"/><rect x="88" y="23" width="8" height="8" fill="currentColor"/><rect x="118" y="48" width="8" height="8" fill="currentColor"/><circle cx="12" cy="14" r="3" fill="currentColor"/><circle cx="36" cy="19" r="3" fill="currentColor"/><circle cx="53" cy="58" r="3" fill="currentColor"/><circle cx="76" cy="27" r="3" fill="currentColor"/><circle cx="106" cy="13" r="3" fill="currentColor"/></svg></span>
+      <span class="ad-cta">Poznaj szkolenia <span aria-hidden="true"><ArrowRight /></span></span>
+     </a>
+    </div>
+   </section>)}
+  </article>
+
+  <article class="banner-sample">
+   <div class="sample-heading"><div><p class="sample-type">Prostokątny</p><h2>300 × 250 px</h2></div><p>Medium rectangle</p></div>
+   {['dark', 'light'].map((theme) => <section class="banner-variant" aria-label={`Wariant ${theme === 'dark' ? 'ciemny' : 'jasny'}`}>
+    <div class="variant-heading"><h3>{theme === 'dark' ? 'Motyw ciemny' : 'Motyw jasny'}</h3><a class="download-link" href={`/downloads/bannery/vs76project-300x250-${theme}.zip`} download={`vs76project-300x250-${theme}.zip`}>Pobierz kod banneru (.zip) <span aria-hidden="true">↓</span></a></div>
+    <div class="banner-viewport"><a class:list={['ad-banner', 'ad-rectangle', `theme-${theme}`]} href="/szkolenia/" aria-label="vs76project. Trzy praktyczne szkolenia AI dla zespołów. Zobacz szkolenia.">
+     <span class="ad-corner-label"><span>PRAKTYCZNE AI</span><span class="rectangle-counter" aria-hidden="true"><span>01 / 03</span><span>02 / 03</span><span>03 / 03</span></span></span>
+     <span class="rectangle-art" aria-hidden="true"><span class="rectangle-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="rectangle-orbit"></span></span>
+     <span class="rectangle-copy" aria-hidden="true">
+      <span class="rectangle-slide"><strong>Od zadania do sprawdzonego wyniku.</strong><span>Szkolenia i doradztwo AI dla firm.</span><span class="ad-cta">Poznaj szkolenia <span><ArrowRight /></span></span></span>
+      <span class="rectangle-slide"><strong>Zaprojektuj pilota AI.</strong><span>Jeden proces. Jasne kryterium jakości.</span><span class="ad-cta">Zobacz warsztaty <span><ArrowRight /></span></span></span>
+      <span class="rectangle-slide"><strong>Zadbaj o bezpieczne AI.</strong><span>Dane, uprawnienia i sprawdzony wynik.</span><span class="ad-cta">Poznaj AI Security <span><ArrowRight /></span></span></span>
+     </span>
+    </a></div>
+   </section>)}
+  </article>
+
+  <article class="banner-sample">
+   <div class="sample-heading"><div><p class="sample-type">Pionowy</p><h2>300 × 600 px</h2></div><p>Half page</p></div>
+   {['dark', 'light'].map((theme) => <section class="banner-variant" aria-label={`Wariant ${theme === 'dark' ? 'ciemny' : 'jasny'}`}>
+    <div class="variant-heading"><h3>{theme === 'dark' ? 'Motyw ciemny' : 'Motyw jasny'}</h3><a class="download-link" href={`/downloads/bannery/vs76project-300x600-${theme}.zip`} download={`vs76project-300x600-${theme}.zip`}>Pobierz kod banneru (.zip) <span aria-hidden="true">↓</span></a></div>
+    <div class="banner-viewport"><a class:list={['ad-banner', 'ad-skyscraper', `theme-${theme}`]} href="/szkolenia/" aria-label="vs76project. Wiedza. Praktyka. Kontrola. Zobacz szkolenia AI dla firm.">
+     <span class="skyscraper-brand"><span class="ad-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span>vs76project</span></span>
+     <span class="skyscraper-intro"><span>AI DLA TWOJEGO ZESPOŁU</span><strong>Wiedza.<br />Praktyka.<br /><em>Kontrola.</em></strong><span>Od konkretnego zadania do rezultatu, który można sprawdzić.</span></span>
+     <span class="skyscraper-matrix" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+     <span class="skyscraper-bottom"><span>Cel przed narzędziem.<br />Ćwiczenie zamiast prezentacji.</span><span class="ad-cta">Zobacz szkolenia <span aria-hidden="true"><ArrowRight /></span></span></span>
+    </a></div>
+   </section>)}
+  </article>
+ </section>
+</Layout>
+
+<style>
+ .banner-motion-control{display:flex;align-items:center;gap:.75rem;min-height:44px;color:var(--text);cursor:pointer}
+ .banner-motion-control input{width:22px;height:22px;accent-color:var(--accent)}
+ .banner-gallery:has(#pause-banners:checked) .ad-banner,
+ .banner-gallery:has(#pause-banners:checked) .ad-banner *,
+ .banner-gallery:has(#pause-banners:checked) .ad-banner *::before,
+ .banner-gallery:has(#pause-banners:checked) .ad-banner *::after{animation-play-state:paused!important}
+ .banner-page-head{padding-bottom:2rem}
+ .banner-page-head .eyebrow,.sample-type{color:var(--accent);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+ .banner-page-head h1{max-width:none;margin:.65rem 0 1rem}
+ .banner-page-head .lead{max-width:66ch}
+ .banner-gallery{display:grid;gap:clamp(2.5rem,6vw,5rem);padding-bottom:var(--section)}
+ .banner-sample{min-width:0;padding-top:1.5rem;border-top:1px solid var(--rule)}
+ .banner-variant{padding-top:1.25rem}
+ .variant-heading{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.7rem}
+ .variant-heading h3{margin:0;font-size:1rem;letter-spacing:-.015em}
+ .download-link{display:inline-flex;align-items:center;gap:.45rem;color:var(--accent);font-size:.82rem;font-weight:700;text-underline-offset:.2em}
+ .download-link:hover{color:var(--text)}
+ .sample-heading{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+ .sample-heading h2{font-size:clamp(1.3rem,2.4vw,1.8rem);letter-spacing:-.025em}
+ .sample-heading p:last-child{color:var(--muted);font-size:.85rem;margin:0 0 .2rem}
+ .sample-type{margin:0 0 .3rem}
+ .banner-viewport{max-width:100%;overflow:auto;padding:20px 2px 24px;scrollbar-color:var(--line) var(--soft)}
+ .ad-banner{position:relative;display:flex;overflow:hidden;isolation:isolate;width:750px;height:100px;color:#f4fbff;background:#062330;border:1px solid #1b526b;text-decoration:none;box-shadow:0 16px 40px rgb(4 28 41 / .18)}
+ .ad-banner:focus-visible{outline-offset:6px}
+ .ad-mark{display:grid;grid-template-columns:repeat(3,4px);grid-template-rows:repeat(3,4px);gap:3px;color:#48ccef;flex:none}
+ .ad-mark i{background:currentColor;animation:tile-glow 4.5s ease-in-out infinite}
+ .ad-mark i:nth-child(3n){opacity:.45}.ad-mark i:nth-child(3){animation-delay:.25s}.ad-mark i:nth-child(5){animation-delay:.5s}.ad-mark i:nth-child(7){animation-delay:.75s}
+ .ad-brand,.skyscraper-brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.08em;white-space:nowrap}
+ .ad-leaderboard{align-items:center;gap:22px;padding:0 22px;background:linear-gradient(110deg,#062330 0%,#0a3d55 64%,#075172 100%)}
+ .ad-brand,.ad-rule,.leaderboard-copy,.ad-cta{position:relative;z-index:2}
+ .ad-rule{width:1px;height:48px;background:#ffffff35}
+ .leaderboard-copy{display:block;flex:1;min-width:0;height:34px;overflow:hidden;font-size:23px;font-weight:700;letter-spacing:-.04em}
+ .leaderboard-words,.leaderboard-words span{position:absolute;inset:0;display:block}
+ .leaderboard-words span{display:flex;align-items:center;opacity:0;animation:word-cycle 6s ease-in-out infinite}
+ .leaderboard-words span:nth-child(2){animation-delay:-2s;color:#48ccef}.leaderboard-words span:nth-child(3){animation-delay:-4s}
+ .leaderboard-visual{position:absolute;z-index:1;top:50%;right:154px;width:116px;height:76px;color:#48ccef;opacity:.28;transform:translateY(-50%);animation:visual-drift 7s ease-in-out infinite}
+ .leaderboard-visual svg{display:block;width:100%;height:100%}
+ .ad-cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:38px;padding:0 14px;background:#48ccef;color:#062537;font-size:12px;font-weight:700;white-space:nowrap;transition:background .2s,transform .2s}
+ .ad-banner:hover .ad-cta{background:#82e2fa;transform:translateY(-2px)}
+ .ad-rectangle{width:300px;height:250px;display:flex;flex-direction:column;padding:14px;background:linear-gradient(145deg,#062330 0%,#0b4058 100%)}
+ .ad-corner-label{display:flex;justify-content:space-between;flex:none;height:12px;color:#b9d9e7;font-size:11px;font-weight:700;letter-spacing:.1em;line-height:12px}
+ .rectangle-counter{position:relative;width:38px;height:12px;overflow:hidden;letter-spacing:0;text-align:right}
+ .rectangle-counter span{position:absolute;inset:0;opacity:0;animation:rectangle-cycle 9s ease-in-out infinite}
+ .rectangle-counter span:nth-child(2){animation-delay:-3s}.rectangle-counter span:nth-child(3){animation-delay:-6s}
+ .rectangle-art{position:relative;display:grid;place-items:center;flex:0 0 72px;height:72px;min-height:0;margin:8px -14px 0;background:linear-gradient(135deg,#0c4b68,#062b40);overflow:hidden}
+ .rectangle-art:after{position:absolute;inset:0;content:"";background:linear-gradient(110deg,transparent 30%,#48ccef20 48%,transparent 66%);transform:translateX(-100%);animation:light-sweep 5s ease-in-out 1}
+ .rectangle-grid{display:grid;grid-template-columns:repeat(3,24px);gap:7px;transform:rotate(-8deg)}
+ .rectangle-grid i{width:24px;height:24px;background:#48ccef;opacity:.72;animation:tile-float 3.8s ease-in-out infinite}
+ .rectangle-grid i:nth-child(2n){animation-delay:.25s;opacity:.2}.rectangle-grid i:nth-child(5){opacity:1}
+ .rectangle-orbit{position:absolute;width:104px;height:104px;border:1px solid #48ccef60;border-radius:50%;animation:orbit 14s linear infinite}
+ .rectangle-orbit:after{position:absolute;top:8px;right:6px;width:8px;height:8px;border-radius:50%;background:#48ccef;content:""}
+ .rectangle-copy{position:relative;flex:0 0 112px;height:112px;min-height:0;overflow:hidden;padding-top:9px}
+ .rectangle-slide{position:absolute;inset:9px 0 0;display:flex;flex-direction:column;align-items:flex-start;gap:5px;opacity:0;animation:rectangle-cycle 9s ease-in-out infinite}
+ .rectangle-slide:nth-child(2){animation-delay:-3s}.rectangle-slide:nth-child(3){animation-delay:-6s}
+ .rectangle-slide strong{font-size:17px;line-height:1.08;letter-spacing:-.04em}
+ .rectangle-slide>span:not(.ad-cta){color:#c0dbe6;font-size:11px;line-height:1.25}
+ .rectangle-slide .ad-cta{min-height:28px;margin-top:auto;padding-inline:10px;font-size:11px}
+ .ad-skyscraper{width:300px;height:600px;flex-direction:column;padding:23px 22px 20px;background:linear-gradient(160deg,#062330 0%,#073b53 56%,#052a40 100%)}
+ .skyscraper-brand{font-size:13px}
+ .skyscraper-intro{display:grid;gap:14px;margin-top:42px}
+ .skyscraper-intro>span:first-child{color:#48ccef;font-size:11px;font-weight:700;letter-spacing:.04em}
+ .skyscraper-intro strong{font-size:37px;line-height:.98;letter-spacing:-.055em}
+ .skyscraper-intro em{color:#48ccef;font-style:normal}
+ .skyscraper-intro>span:last-child{max-width:220px;color:#c0dbe6;font-size:12px;line-height:1.55}
+ .skyscraper-matrix{display:grid;grid-template-columns:repeat(3,46px);gap:8px;align-self:center;margin:auto 0}
+ .skyscraper-matrix i{width:46px;height:46px;background:#48ccef;opacity:.16;animation:tile-float 4s ease-in-out infinite}
+ .skyscraper-matrix i:nth-child(2n){animation-delay:.35s}.skyscraper-matrix i:nth-child(5){opacity:.95;animation:tile-feature 5s ease-in-out infinite}
+ .skyscraper-bottom{display:grid;gap:14px;padding-top:17px;border-top:1px solid #ffffff35;color:#c0dbe6;font-size:11px;line-height:1.5}
+ .skyscraper-bottom .ad-cta{justify-self:start;min-height:34px;font-size:11px}
+ .ad-banner.theme-light{color:#082338;border-color:#9bb5c3;box-shadow:0 12px 32px rgb(8 35 56 / .12)}
+ .ad-leaderboard.theme-light{background:linear-gradient(110deg,#f7fbfd 0%,#e6f3f8 65%,#d9edf4 100%)}
+ .theme-light .ad-brand,.theme-light .leaderboard-copy{color:#082338}.theme-light .ad-mark{color:#006a88}
+ .theme-light .ad-rule{background:#08233835}
+ .theme-light .leaderboard-visual{color:#006a88;opacity:.2}
+ .theme-light .ad-cta{background:#48ccef;color:#062537}
+ .ad-rectangle.theme-light{background:linear-gradient(145deg,#f7fbfd 0%,#e6f3f8 100%)}
+ .theme-light .ad-corner-label{color:#355b73}
+ .theme-light .rectangle-art{background:linear-gradient(135deg,#d7eef5,#bfe4ef)}
+ .theme-light .rectangle-art:after{background:linear-gradient(110deg,transparent 30%,#006a881c 48%,transparent 66%)}
+ .theme-light .rectangle-grid i{background:#006a88}
+ .theme-light .rectangle-orbit{border-color:#006a8860}
+ .theme-light .rectangle-orbit:after{background:#006a88}
+ .theme-light .rectangle-slide>span:not(.ad-cta){color:#355b73}
+ .ad-skyscraper.theme-light{background:linear-gradient(160deg,#f7fbfd 0%,#e5f3f8 56%,#d9edf4 100%)}
+ .theme-light .skyscraper-intro>span:first-child,.theme-light .skyscraper-intro em{color:#006a88}
+ .theme-light .skyscraper-intro>span:last-child,.theme-light .skyscraper-bottom{color:#355b73}
+ .theme-light .skyscraper-matrix i{background:#006a88}
+ .theme-light .skyscraper-bottom{border-color:#08233835}
+ @keyframes tile-glow{0%,100%{opacity:.35;transform:scale(.88)}50%{opacity:1;transform:scale(1)}}
+ @keyframes word-cycle{0%,22%{opacity:1;transform:translateY(0)}29%,100%{opacity:0;transform:translateY(-8px)}}
+ @keyframes rectangle-cycle{0%,20%{opacity:1;transform:translateY(0)}25%,100%{opacity:0;transform:translateY(-6px)}}
+ @keyframes tile-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+ @keyframes tile-feature{0%,100%{transform:scale(1);box-shadow:0 0 0 #48ccef00}50%{transform:scale(1.08);opacity:1}}
+ @keyframes light-sweep{0%,35%{transform:translateX(-100%)}65%,100%{transform:translateX(100%)}}
+ @keyframes visual-drift{0%,100%{opacity:.19;transform:translate(0,-50%)}50%{opacity:.34;transform:translate(-5px,-50%)}}
+ @keyframes orbit{to{transform:rotate(360deg)}}
+ @media(max-width:600px){.sample-heading{align-items:start;flex-direction:column;gap:.35rem}.sample-heading p:last-child{margin:0}.variant-heading{align-items:start;flex-direction:column;gap:.45rem}}
+ @media(prefers-reduced-motion:reduce){.ad-banner *,.ad-banner:before,.ad-banner:after{animation:none!important;transition:none!important}.leaderboard-words span,.rectangle-counter span,.rectangle-slide{opacity:0}.leaderboard-words span:first-child,.rectangle-counter span:first-child,.rectangle-slide:first-child{opacity:1}.leaderboard-visual{opacity:.24;transform:translateY(-50%)}}
+</style>

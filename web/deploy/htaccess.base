@@ -1,0 +1,48 @@
+# vs76project | konfiguracja Apache/LiteSpeed dla statycznego buildu (generowana przez scripts/build_release.sh)
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+AddDefaultCharset UTF-8
+AddType font/woff .woff
+AddType font/woff2 .woff2
+AddType image/svg+xml .svg
+
+RedirectMatch 301 ^/szkolenia/automatyzacja/?$ /szkolenia/projektowanie-pilota-ai/
+
+# Zachowaj stare adresy poradników po przeniesieniu do katalogów datowanych.
+RedirectMatch 301 ^/wiedza/jak-sprawdzac-odpowiedzi-ai/?$ /wiedza/2026-10-30/jak-sprawdzac-odpowiedzi-ai/
+RedirectMatch 301 ^/wiedza/od-zadania-do-pilota/?$ /wiedza/2026-10-30/od-zadania-do-pilota/
+
+# Strona jest statyczna: PHP wykonują tylko endpointy formularza (api/challenge.php, api/contact.php).
+# Wszystkie inne pliki PHP (m.in. api/_lib.php) są blokowane, tak samo .phtml/.phar.
+<FilesMatch "^(?!(challenge|contact)\.php$).*\.(php|phtml|phar|php[0-9])$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
+  # HTML zawsze weryfikowany; pliki z hashem w nazwie (_astro) buforowane długo; reszta tydzień.
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.(woff|woff2|svg|png|pdf|ico)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+  <If "%{REQUEST_URI} =~ m#^/_astro/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+</IfModule>

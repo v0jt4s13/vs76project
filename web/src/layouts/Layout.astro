@@ -1,0 +1,7 @@
+---
+// Powłoka strony pochodzi z aktywnego szablonu (PUBLIC_TEMPLATE, patrz astro.config.mjs i src/templates/README.md).
+import '../templates/_shared/content.css';
+import TemplateLayout from '@template/Layout.astro';
+interface Props { title: string; seoTitle?: string; description?: string; schema?: Record<string,unknown>; }
+---
+<TemplateLayout {...Astro.props}><slot /></TemplateLayout>

@@ -1,0 +1,23 @@
+---
+// Szablon "classic": granatowy plakat na stronie głównej, nawigacja w nagłówku, rozbudowana stopka.
+import './styles.css';
+import Head from '../_shared/Head.astro';
+import Brand from './Brand.astro';
+import { site, navigation } from '../../data/site';
+interface Props { title: string; seoTitle?: string; description?: string; schema?: Record<string,unknown>; }
+const path = Astro.url.pathname;
+const templatePorts = (import.meta.env.PUBLIC_TEMPLATE_PORTS || '').split(',').map((entry) => { const [name, port] = entry.split(':'); return { name, port }; }).filter(({ name, port }) => name && /^\d+$/.test(port || ''));
+---
+<!doctype html>
+<html lang="pl" data-template="classic">
+<head>
+<Head {...Astro.props} themeColor="#063957"><link rel="preload" href="/fonts/noto-sans-regular.woff" as="font" type="font/woff" crossorigin /></Head>
+</head>
+<body>
+<a href="#tresc" class="skip-link">Przejdź do treści</a>
+<header class="site-header"><div class="container header-inner"><Brand /><nav class="desktop-nav" aria-label="Główna">{navigation.map(([href,label])=><a href={href} aria-current={path.startsWith(href)?'page':undefined}>{label}</a>)}</nav><div class="header-actions"><button type="button" class="theme-toggle" data-theme-toggle hidden>Motyw: Auto</button><label class="font-control"><span class="sr-only">Krój pisma</span><select data-font-select aria-label="Wybierz krój pisma"><option value="noto">Noto Sans</option><option value="ibm-plex">IBM Plex Sans</option><option value="atkinson">Atkinson Hyperlegible</option><option value="literata">Literata</option></select></label>{import.meta.env.DEV && templatePorts.length > 1 && <label class="template-control"><span class="sr-only">Szablon strony</span><select data-template-switch aria-label="Przełącz szablon">{templatePorts.map(({ name, port }) => <option value={port} selected={name === site.template}>{name === 'classic' ? 'Classic' : name === 'starter' ? 'Starter' : name}</option>)}</select></label>}<a class="header-contact" href="/kontakt/" aria-current={path==='/kontakt/'?'page':undefined}>Porozmawiajmy</a><details class="mobile-menu"><summary>Menu</summary><nav aria-label="Główna mobilna">{navigation.map(([href,label])=><a href={href} aria-current={path.startsWith(href)?'page':undefined}>{label}</a>)}<a href="/o-nas/">O vs76project</a><a href="/wspolpraca/">Współpraca B2B</a><a href="/kontakt/">Kontakt</a></nav></details></div></div></header>
+<main id="tresc" tabindex="-1"><slot /></main>
+<footer class="site-footer"><div class="container footer-grid"><div><Brand footer /><p>Praktyczne umiejętności.<br />Rezultaty, które można sprawdzić.</p></div><div><h2>Poznaj vs76project.pl</h2><a href="/o-nas/">O firmie</a><a href="/szkolenia/">Szkolenia AI</a><a href="/edukacja/">AI w edukacji</a><a href="/doradztwo/">Doradztwo i automatyzacja</a><a href="/ai-security/">AI Security</a><a href="/wiedza/">Wiedza</a></div><div><h2>Porozmawiajmy</h2><a href="/wspolpraca/">Współpraca B2B</a><a href="/kontakt/">Zapytanie ofertowe</a><a href="/prywatnosc/">Prywatność</a>{import.meta.env.DEV && import.meta.env.PUBLIC_REVIEW_ENABLED && <a href="/odbior/">Odbiór projektu</a>}</div></div><div class="container footer-bottom"><span>© {new Date().getFullYear()} vs76project.pl</span><span>Szkolenia i doradztwo AI dla firm.</span></div></footer>
+<script>import '../../scripts/site';import '../../scripts/motion';</script>
+</body>
+</html>

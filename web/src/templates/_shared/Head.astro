@@ -1,0 +1,34 @@
+---
+// Wspólna część <head> dla wszystkich szablonów: SEO, Open Graph, motyw, dane strukturalne.
+// Szablon może dodać własne elementy (np. preload fontów) przez <slot />.
+import { site } from '../../data/site';
+interface Props { title: string; seoTitle?: string; description?: string; schema?: Record<string,unknown>; themeColor?: string; }
+const { title, seoTitle, description = site.description, schema, themeColor = '#063957' } = Astro.props;
+const pageTitle = (seoTitle || title).replace(/[.!]+$/, '');
+const path = Astro.url.pathname;
+const canonical = site.url ? new URL(path, site.url).href : undefined;
+const indexing = Boolean(site.url && site.indexing);
+const organization = { '@context':'https://schema.org', '@type':'Organization', name:site.name, description:site.description, ...(site.email?{contactPoint:{'@type':'ContactPoint',contactType:'zapytania o szkolenia i doradztwo',email:site.email,availableLanguage:'pl'}}:{}), ...(site.url ? {url:site.url} : {}) };
+---
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{pageTitle} | vs76project.pl</title>
+<meta name="description" content={description} />
+<meta name="robots" content={indexing?'index,follow':'noindex,nofollow'} />
+{canonical && <link rel="canonical" href={canonical} />}
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="pl_PL" />
+<meta property="og:title" content={`${pageTitle} | vs76project.pl`} />
+<meta property="og:description" content={description} />
+{canonical && <meta property="og:url" content={canonical} />}
+<meta property="og:image" content={site.url?`${site.url}/og.png`:'/og.png'} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="vs76project: praktyczne szkolenia AI dla firm" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content={themeColor} />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<slot />
+<script is:inline>try{const r=document.documentElement,t=localStorage.getItem('vs76project-theme'),f=localStorage.getItem('vs76project-font');if(t==='light'||t==='dark')r.dataset.theme=t;if(['noto','ibm-plex','atkinson','literata'].includes(f))r.dataset.font=f}catch{}</script>
+<script is:inline>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){const e=document.documentElement;e.classList.add('js-motion');setTimeout(()=>{if(!e.dataset.motion)e.classList.remove('js-motion')},4000)}</script>
+<script type="application/ld+json" set:html={JSON.stringify(schema || organization).replace(/</g,'\u003c')} />

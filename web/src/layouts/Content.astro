@@ -1,0 +1,7 @@
+---
+import Layout from './Layout.astro';
+import PageVisuals from '../components/PageVisuals.astro';
+interface Props { title:string; lead:string; description?:string; seoTitle?:string; visuals?:string; }
+const {title,lead,description,seoTitle,visuals}=Astro.props;
+---
+<Layout title={title} seoTitle={seoTitle} description={description || lead}><div class="container page-head"><h1>{title}</h1><p class="lead">{lead}</p></div>{visuals && <PageVisuals set={visuals} />}<slot /></Layout>

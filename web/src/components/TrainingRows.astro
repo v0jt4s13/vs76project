@@ -1,0 +1,5 @@
+---
+import { courses, pln, perPerson } from '../data/trainings';
+import Arrow from './Arrow.astro';
+---
+<div class="training-list">{courses.map((course)=><article class="training-row"><div class="training-main"><h3><a href={`/szkolenia/${course.slug}/`}>{course.short}<Arrow /></a></h3><p>{course.lead}</p>{course.badge && <p class="training-badge">{course.badge}</p>}</div><dl class="training-meta"><div><dt>Czas zajęć</dt><dd>{course.hours} netto</dd></div><div><dt>Grupa online, netto</dt><dd>{pln(course.price)} zł*<small class="per-person">{perPerson(course.price,10)} zł/os. przy 10 osobach, {perPerson(course.price,6)} zł/os. przy 6</small></dd></div></dl></article>)}</div><p class="fine-print">* Cena netto (bez VAT) za grupę online do 10 osób. Każdy dzień obejmuje dodatkowo 60 min przerw. Szczegóły w programie i indywidualnej ofercie.</p>

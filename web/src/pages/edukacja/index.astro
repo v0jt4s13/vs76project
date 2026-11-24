@@ -1,0 +1,41 @@
+---
+import Content from '../../layouts/Content.astro';
+import CTA from '../../components/CTA.astro';
+import Arrow from '../../components/Arrow.astro';
+import { eduPrograms } from '../../data/education';
+---
+<Content visuals="edukacja" title="AI w edukacji: praktyka dla szkół." seoTitle="AI w edukacji, szkolenia dla szkół" lead="Szkolenia dla dyrekcji i nauczycieli szkół podstawowych i średnich. Praktyczne narzędzia, lekcje z AI i jasne zasady korzystania w placówce.">
+ <section class="container section-bottom">
+  <h2 class="sr-only">Programy dla szkół</h2>
+  <div class="training-list">
+   {eduPrograms.map((p) => (
+    <article class="training-row">
+     <div class="training-main">
+      <h3><a href={`/edukacja/${p.slug}/`}>{p.short}<Arrow /></a></h3>
+      <p>{p.lead}</p>
+      <p class="training-badge">{p.audience}</p>
+     </div>
+     <dl class="training-meta">
+      <div><dt>Czas</dt><dd>{p.duration}</dd></div>
+      <div><dt>Forma</dt><dd>{p.schedule}</dd></div>
+     </dl>
+    </article>
+   ))}
+  </div>
+  <p class="fine-print">Cena zależy od liczby uczestników, formy i miejsca. Przygotowujemy indywidualną wycenę po rozpoznaniu potrzeb szkoły.</p>
+ </section>
+ <section class="split-feature section">
+  <div class="container two-col">
+   <div><h2>Dwie grupy, jeden język.</h2><p class="lead">Dyrekcja i nauczyciele pracują razem nad tym, jak uczniowie korzystają z AI, i osobno nad swoimi zadaniami.</p></div>
+   <ul class="service-list">
+    <li><h3>Dyrekcja i liderzy</h3><p>Ramy organizacyjne, zasady oceniania, zapobieganie plagiatom i pierwsze założenia polityki AI dla placówki.</p></li>
+    <li><h3>Nauczyciele</h3><p>Materiały dydaktyczne, ocenianie i informacja zwrotna oraz lekcje, w których AI wspiera myślenie krytyczne.</p></li>
+    <li><h3>Szkoła jako całość</h3><p>Wspólne zasady, ochrona danych i wizerunku uczniów oraz wsparcie dla osób, które dopiero zaczynają.</p></li>
+   </ul>
+  </div>
+ </section>
+ <section class="container section">
+  <div class="download-line"><div><h2 style="font-size:1.6rem">Porozmawiajmy o Waszej szkole.</h2><p>Opisz placówkę, liczbę osób i termin. Dopasujemy program i formę (jeden dzień albo dwa bloki).</p></div><a class="button" href="/kontakt/?temat=AI%20w%20edukacji">Zapytaj o szkolenie dla szkół<Arrow /></a></div>
+ </section>
+ <CTA />
+</Content>
